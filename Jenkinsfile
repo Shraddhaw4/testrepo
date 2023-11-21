@@ -1,10 +1,10 @@
 pipeline {
     agent {label 'packer'}
 
-    environment {
-        // Define your GitHub Personal Access Token as a secret credential
-        //GITHUB_TOKEN = credentials('Jssh')
-    }
+    // environment {
+    //     // Define your GitHub Personal Access Token as a secret credential
+    //     //GITHUB_TOKEN = credentials('Jssh')
+    // }
 
     stages {
         stage('Checkout') {
