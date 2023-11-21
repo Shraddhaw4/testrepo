@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent {label 'packer'}
 
     environment {
         // Define your GitHub Personal Access Token as a secret credential
-        GITHUB_TOKEN = credentials('Jssh')
+        //GITHUB_TOKEN = credentials('Jssh')
     }
 
     stages {
@@ -11,11 +11,12 @@ pipeline {
             steps {
                 script {
                     // Checkout the code from your private Git repository
-                    checkout([$class: 'GitSCM', 
-                        branches: [[name: '*/master']],  // Specify the branch
-                        userRemoteConfigs: [[url: 'git@github.com:Shraddhaw4/testrepo.git',
-                                            credentialsId: GITHUB_TOKEN]]
-                    ])
+                    git "https://github.com/Shraddhaw4/testrepo.git"
+                    // checkout([$class: 'GitSCM', 
+                    //     branches: [[name: '*/master']],  // Specify the branch
+                    //     userRemoteConfigs: [[url: 'git@github.com:Shraddhaw4/testrepo.git',
+                    //                         credentialsId: GITHUB_TOKEN]]
+                    // ])
                 }
             }
         }
