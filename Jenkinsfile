@@ -15,7 +15,7 @@ pipeline {
 
         stage('PrintParameter'){
             steps{
-                sh 'echo ${HELLO}'
+                sh 'echo ${test}'
             }
         }
 
