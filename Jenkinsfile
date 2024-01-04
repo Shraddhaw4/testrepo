@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'packer'}
     parameters {
-        string(defaultValue: "", description: 'K', name: 'test')
+        string(defaultValue: "", description: 'T', name: 'test')
         extendedChoice name: 'states', description: 'Choose one state', defaultValue: 'mah', type: 'PT_RADIO', descriptionPropertyValue: 'Maharashtra,Gujarat,Dehradun', value: 'mah,guj,deh'
     }
     stages {
