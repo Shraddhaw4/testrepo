@@ -1,6 +1,3 @@
-def getBuildUser() {
-    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId
-}
 pipeline {
     agent {label 'packer'}
 
@@ -14,6 +11,7 @@ pipeline {
                 script {
                     // Checkout the code from your private Git repository
                     git "https://github.com/Shraddhaw4/testrepo.git"
+                    echo "User : $BUILD_USER"
                 }
             }
         }
