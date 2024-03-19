@@ -1,8 +1,6 @@
 pipeline {
     agent {label 'packer'}
-    environment {
-        #user_name = env.BUILD_USER
-    }
+
     parameters {
         string(defaultValue: "", description: 'K', name: 'test')
         extendedChoice name: 'states', description: 'Choose one state', defaultValue: 'mah', type: 'PT_RADIO', descriptionPropertyValue: 'Maharashtra,Gujarat,Dehradun', value: 'mah,guj,deh'
