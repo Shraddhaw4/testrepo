@@ -20,6 +20,9 @@ pipeline {
                 sh 'echo ${states}'
                 sh 'echo ${test}'
                 sh 'echo ${BUILD_USER}'
+                def getBuildUser() {
+                    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+                }
             }
         }
 
