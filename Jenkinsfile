@@ -1,3 +1,6 @@
+def getBuildUser() {
+    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId
+}
 pipeline {
     agent {label 'packer'}
 
@@ -25,9 +28,6 @@ pipeline {
         stage('User') {
             steps {
                 script {
-                    def getBuildUser() {
-                        return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
-                    }
                     print (getBuildUser)
                 }
             }
