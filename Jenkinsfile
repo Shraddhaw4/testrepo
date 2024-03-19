@@ -8,11 +8,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                script {
                     // Checkout the code from your private Git repository
-                    git "https://github.com/Shraddhaw4/testrepo.git"
-                    echo "User : $BUILD_USER"
+                git "https://github.com/Shraddhaw4/testrepo.git"
+                wrap([$class: 'BuildUser']) {
+                  script {
+                     USER_ID = "${BUILD_USER_ID}"
+                  }
                 }
+                echo "${USER_ID}"
             }
         }
 
@@ -23,14 +26,6 @@ pipeline {
                 sh 'echo ${BUILD_USER}'
             }
         }
-        stage('User') {
-            steps {
-                script {
-                    print (getBuildUser)
-                }
-            }
-        }
-
         stage('Build') {
             steps {
                 // Activate a virtual environment (if needed)
