@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'packer'}
     environment {
-        user_name = env.BUILD_USER
+        #user_name = env.BUILD_USER
     }
     parameters {
         string(defaultValue: "", description: 'K', name: 'test')
@@ -21,7 +21,7 @@ pipeline {
             steps{
                 sh 'echo ${states}'
                 sh 'echo ${test}'
-                sh 'echo ${user_name}'
+                sh 'echo ${BUILD_USER}'
             }
         }
 
