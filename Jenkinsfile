@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'packer'}
     environment {
-        user_name = env.BUILD_USER_ID
+        user_name = env.BUILD_USER
     }
     parameters {
         string(defaultValue: "", description: 'K', name: 'test')
