@@ -12,10 +12,10 @@ pipeline {
                 git "https://github.com/Shraddhaw4/testrepo.git"
                 wrap([$class: 'BuildUser']) {
                   script {
-                     USER_ID = "${BUILD_USER_ID}"
+                     USER_ID = "${BUILD_USER}"
                   }
                 }
-                echo "${USER_ID}"
+                echo "User is : ${USER_ID}"
             }
         }
 
