@@ -34,6 +34,7 @@ pipeline {
               
                 // Build the Python script
                 sh 'python hello.py'
+                echo "User is : ${USER_ID}"
             }
         }
     }
