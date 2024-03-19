@@ -1,5 +1,7 @@
 pipeline {
     agent {label 'packer'}
+    environment {
+        user_name = env.BUILD_USER_ID
     parameters {
         string(defaultValue: "", description: 'K', name: 'test')
         extendedChoice name: 'states', description: 'Choose one state', defaultValue: 'mah', type: 'PT_RADIO', descriptionPropertyValue: 'Maharashtra,Gujarat,Dehradun', value: 'mah,guj,deh'
@@ -18,6 +20,7 @@ pipeline {
             steps{
                 sh 'echo ${states}'
                 sh 'echo ${test}'
+                sh 'echo ${user_name}'
             }
         }
 
