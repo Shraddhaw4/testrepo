@@ -37,9 +37,18 @@ pipeline {
                 echo "User is : ${USER_ID}"
             }
         }
+        stage('Download') {
+            steps {
+                sh 'echo "artifact file" > generatedFile.txt'
+            }
+        }
+     
     }
 
     post {
+        always {
+            archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true
+        }
         success {
             // This block is executed when the build is successful
             echo 'Build successful!'
