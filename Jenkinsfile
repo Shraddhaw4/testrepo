@@ -42,12 +42,24 @@ pipeline {
                 sh 'echo "artifact file" > generatedFile.txt'
             }
         }
+        stage('Uownload') {
+            steps {
+                sh 'mkdir js'
+                sh 'echo "not a artifact file" > js/build.js'
+                sh 'echo "artifact file" > js/build.min.js'
+                
+                sh 'mkdir css'
+                sh 'echo "not a artifact file" > css/build.css'
+                sh 'echo "artifact file" > css/build.min.css'
+            }
+        }
      
     }
 
     post {
         always {
             archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '**/*.min.*', onlyIfSuccessful: true
         }
         success {
             // This block is executed when the build is successful
